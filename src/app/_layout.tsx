@@ -1,29 +1,64 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/src/hooks/useColorScheme';
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { Stack } from "expo-router";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { RootSiblingParent } from 'react-native-root-siblings';
+const RootLayout = () => {
+  const navTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'transparent'
+    },
+  };
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <GestureHandlerRootView >
+      <ThemeProvider value={navTheme}>
+        <RootSiblingParent>
+          <Stack
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}>
+            <Stack.Screen
+              name="index"
+              options={{ headerShown: false }} />
+
+            <Stack.Screen
+              name="(auth)/signup"
+              options={{ headerShown: false }} />
+
+            <Stack.Screen
+              name="(auth)/welcome"
+              options={{ headerShown: false }} />
+
+            <Stack.Screen
+              name="(auth)/signin"
+              options={{ headerShown: false }} />
+
+            {/* <Stack.Screen
+                                name="(auth)/verify"
+                                options={{ headerShown: false }} />
+
+                            <Stack.Screen
+                                name="(tabs)"
+                                options={{ headerShown: false }} />
+
+                            <Stack.Screen
+                                name="product/index"
+                                options={{ headerShown: false }} />
+
+                             */}
+          </Stack>
+        </RootSiblingParent>
+      </ThemeProvider>
+    </GestureHandlerRootView >
+  )
 }
+
+export default RootLayout
