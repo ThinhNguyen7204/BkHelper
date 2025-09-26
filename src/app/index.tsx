@@ -1,9 +1,15 @@
-import WelcomePage from "@/app/(auth)/welcome"
+import { Redirect } from "expo-router"
 
 const RootPage = () => {
-    return (
-        <WelcomePage />
-    )
+    if (true) {
+        return (
+            <Redirect href={"/(auth)/signin"} />
+        )
+    }
+
+    // return (
+    //     <WelcomePage />
+    // )
 }
 
 export default RootPage
