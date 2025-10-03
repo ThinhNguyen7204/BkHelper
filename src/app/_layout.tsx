@@ -1,3 +1,4 @@
+import { APP_COLOR } from "@/utils/constant";
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -18,7 +19,7 @@ const RootLayout = () => {
           <Stack
             screenOptions={{
               headerStyle: {
-                backgroundColor: '#f4511e',
+                backgroundColor: APP_COLOR.BLUE,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
@@ -41,19 +42,10 @@ const RootLayout = () => {
               name="(auth)/signin"
               options={{ headerShown: false }} />
 
-            {/* <Stack.Screen
-                                name="(auth)/verify"
-                                options={{ headerShown: false }} />
+            <Stack.Screen
+              name="(tabs)"
+              options={{ headerShown: false }} />
 
-                            <Stack.Screen
-                                name="(tabs)"
-                                options={{ headerShown: false }} />
-
-                            <Stack.Screen
-                                name="product/index"
-                                options={{ headerShown: false }} />
-
-                             */}
           </Stack>
         </RootSiblingParent>
       </ThemeProvider>

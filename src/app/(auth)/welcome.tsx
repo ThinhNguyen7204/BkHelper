@@ -50,107 +50,105 @@ const WelcomePage = () => {
 
 
     return (
-        <>
-            <ImageBackground
+        <ImageBackground
+            style={{ flex: 1 }}
+            source={bg}
+        >
+            <LinearGradient
                 style={{ flex: 1 }}
-                source={bg}
+                colors={['transparent', '#191B2F']}
+                locations={[0.2, 0.8]}
             >
-                <LinearGradient
-                    style={{ flex: 1 }}
-                    colors={['transparent', '#191B2F']}
-                    locations={[0.2, 0.8]}
-                >
-                    <View style={styles.container}>
-                        <View style={styles.welcomeText}>
-                            <Text style={styles.header}>
-                                Welcome to
-                            </Text>
-                            <Text style={styles.body}>
-                                BkHelper
-                            </Text>
+                <View style={styles.container}>
+                    <View style={styles.welcomeText}>
+                        <Text style={styles.header}>
+                            Welcome to
+                        </Text>
+                        <Text style={styles.body}>
+                            BkHelper
+                        </Text>
+                    </View>
+                    <View style={styles.welcomeButton}>
+                        <TextBetweenLine
+                            TextColor="white"
+                            title="Đăng nhập với" />
+                        <View style={{
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            gap: 30,
+                        }}>
+                            <ShareButton
+                                title="Facebook"
+                                onPress={() => alert("me")}
+                                textStyle={{ textTransform: "uppercase" }}
+                                buttonStyle={{
+                                    justifyContent: "center",
+                                    borderRadius: 30,
+                                    backgroundColor: "#fff"
+                                }}
+                                icon={
+                                    <Image source={falogo} />
+                                }
+                            />
+                            <ShareButton
+                                title="Google"
+                                onPress={() => alert("me")}
+                                textStyle={{ textTransform: "uppercase" }}
+                                buttonStyle={{
+                                    justifyContent: "center",
+                                    borderRadius: 30,
+                                    paddingHorizontal: 20,
+                                    backgroundColor: "#fff"
+                                }}
+                                icon={
+                                    <Image source={gglogo} />
+                                }
+                            />
                         </View>
-                        <View style={styles.welcomeButton}>
-                            <TextBetweenLine
-                                TextColor="white"
-                                title="Đăng nhập với" />
-                            <View style={{
-                                flexDirection: "row",
-                                justifyContent: "center",
-                                gap: 30,
+                        <View>
+                            <ShareButton
+                                title="Đăng nhập với email"
+                                onPress={() => {
+                                    router.push("/(auth)/signin")
+                                }}
+                                textStyle={{ color: "#fff", paddingVertical: 5 }}
+                                buttonStyle={{
+                                    justifyContent: "center",
+                                    borderRadius: 30,
+                                    marginHorizontal: 50,
+                                    paddingHorizontal: 10,
+                                    backgroundColor: "#2c2c2c",
+                                    borderColor: "#505050",
+                                    borderWidth: 1
+                                }}
+                                pressStyle={{ alignSelf: "stretch" }}
+                            />
+                        </View>
+                        <View style={{
+                            flexDirection: "row",
+                            gap: 10,
+                            justifyContent: "center"
+                        }}>
+                            <Text style={{
+                                textAlign: "center",
+                                color: "white"
                             }}>
-                                <ShareButton
-                                    title="Facebook"
-                                    onPress={() => alert("me")}
-                                    textStyle={{ textTransform: "uppercase" }}
-                                    buttonStyle={{
-                                        justifyContent: "center",
-                                        borderRadius: 30,
-                                        backgroundColor: "#fff"
-                                    }}
-                                    icon={
-                                        <Image source={falogo} />
-                                    }
-                                />
-                                <ShareButton
-                                    title="Google"
-                                    onPress={() => alert("me")}
-                                    textStyle={{ textTransform: "uppercase" }}
-                                    buttonStyle={{
-                                        justifyContent: "center",
-                                        borderRadius: 30,
-                                        paddingHorizontal: 20,
-                                        backgroundColor: "#fff"
-                                    }}
-                                    icon={
-                                        <Image source={gglogo} />
-                                    }
-                                />
-                            </View>
-                            <View>
-                                <ShareButton
-                                    title="Đăng nhập với email"
-                                    onPress={() => {
-                                        router.push("/(auth)/signin")
-                                    }}
-                                    textStyle={{ color: "#fff", paddingVertical: 5 }}
-                                    buttonStyle={{
-                                        justifyContent: "center",
-                                        borderRadius: 30,
-                                        marginHorizontal: 50,
-                                        paddingHorizontal: 10,
-                                        backgroundColor: "#2c2c2c",
-                                        borderColor: "#505050",
-                                        borderWidth: 1
-                                    }}
-                                    pressStyle={{ alignSelf: "stretch" }}
-                                />
-                            </View>
-                            <View style={{
-                                flexDirection: "row",
-                                gap: 10,
-                                justifyContent: "center"
-                            }}>
+                                Chưa có tài khoản?
+                            </Text>
+                            <Link href={"/(auth)/signup"}>
                                 <Text style={{
                                     textAlign: "center",
-                                    color: "white"
+                                    color: "white",
+                                    textDecorationLine: "underline"
                                 }}>
-                                    Chưa có tài khoản?
+                                    Đăng ký.
                                 </Text>
-                                <Link href={"/(auth)/signup"}>
-                                    <Text style={{
-                                        textAlign: "center",
-                                        color: "white",
-                                        textDecorationLine: "underline"
-                                    }}>
-                                        Đăng ký.
-                                    </Text>
-                                </Link>
-                            </View>
+                            </Link>
                         </View>
                     </View>
-                </LinearGradient>
-            </ImageBackground>
-        </>
+                </View>
+            </LinearGradient>
+        </ImageBackground>
     )
 }
 

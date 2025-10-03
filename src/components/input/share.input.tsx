@@ -1,7 +1,7 @@
 import { APP_COLOR } from "@/utils/constant";
-import { useState } from "react";
-import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from "react-native"
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { useState } from "react";
+import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from "react-native";
 
 const styles = StyleSheet.create({
     InputGroup: {
@@ -58,7 +58,7 @@ const ShareInput = (props: IProps) => {
                     }}
                     keyboardType={keyboardType}
                     style={[styles.Input,
-                    { borderColor: isFocus ? APP_COLOR.ORANGE : APP_COLOR.GREY }
+                    { borderColor: isFocus ? APP_COLOR.BLUE : APP_COLOR.GREY }
                     ]}
                     secureTextEntry={secureTextEntry && !isShowPassword}
                 />
